@@ -11,3 +11,10 @@ nltk 3.4 <br />
 tensorflow 1.8 <br />
 logging <br />
 scipy 1.1 <br />
+
+## Data Pre-processing 
+We need to pre-process the raw dialogue text files into dictionaries containing the dependency/contextual graphs for dialogue history, query and create the Knowledge graph from the KB triples. All these are done by ```preprocess_dstc2.py``` for the English and code-mixed versions of DSTC2 dataset. <br />
+* ### Pre-process En-DSTC2:
+   ```python preprocess_dstc2.py --source_dir ../data/en-dstc2 --target_dir ../data/en-dstc2 --rand_edges False --use_associations False ``` <br />
+* ### Pre-process Code-Mixed versions with ppmi used for contextual graphs:
+   ```python preprocess_dstc2.py --source_dir ../data/hi-dstc2 --target_dir ../data/hi-dstc2 --rand_edges False --use_associations True --dict_name edge-dict-ppmi-dstc2```
