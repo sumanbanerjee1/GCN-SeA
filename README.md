@@ -20,10 +20,10 @@ We need to pre-process the raw dialogue text files into dictionaries containing 
    ```python preprocess_dstc2.py --source_dir ../data/hi-dstc2 --target_dir ../data/hi-dstc2 --rand_edges False --use_associations True --dict_name edge-dict-ppmi-dstc2```
 
 ## Training and Inference
-To train the model on En-DSTC2 run:
+* To train the model on En-DSTC2 run:
    ```python main.py -train=True -config_id=1 -data_dir=../data/en-dstc2 -data_name=/preprocessed-dialog-dstc2-final_data.json -rnn_unit=gru -edge_gate=True -use_rnn=True -learning_rate=0.0008 -l2=0.001 -batch_size=32 -epochs=30 -num_hops=1 -dropout=0.9 -word_emb_dim=300 -rnn_hidden_units=300 -gcn_hidden_units=300 -seed=1234 -init=trunc```
 
-* To train on code-mixed versions of DSTC2 change ```-data_dir``` and ```-data_name``` appropriately.
-* To run in Inference mode change ```-train=False```
-* To run Inference on provided trained models ensure that ```-config_id``` matches with the checkpoint directory number. For example, use ```-config_id=35``` for running Inference on provided model for En-DSTC2.
+   * To train on code-mixed versions of DSTC2 change ```-data_dir``` and ```-data_name``` appropriately.
+   * To run in Inference mode change ```-train=False```
+   * To run Inference on provided trained models ensure that ```-config_id``` matches with the checkpoint directory number. For example, use ```-config_id=35``` for running Inference on provided model for En-DSTC2.
 
