@@ -13,12 +13,16 @@ logging <br />
 scipy 1.1 <br />
 
 ## Data Pre-processing 
-We need to pre-process the raw dialogue text files into dictionaries containing the dependency/contextual graphs for dialogue history, query and create the Knowledge graph from the KB triples. All these are done by ```preprocess_dstc2.py``` for the English and code-mixed versions of DSTC2 dataset. <br />
+We need to pre-process the raw dialogue text files into dictionaries containing the dependency/contextual graphs for dialogue history, query and create the Knowledge graph from the KB triples. <br />
 * ### Pre-process En-DSTC2:
    ```python preprocess_dstc2.py --source_dir ../data/en-dstc2 --target_dir ../data/en-dstc2 --rand_edges False --use_associations False ``` <br />
 * ### Pre-process Code-Mixed versions with ppmi used for contextual graphs:
-   ```python preprocess_dstc2.py --source_dir ../data/hi-dstc2 --target_dir ../data/hi-dstc2 --rand_edges False --use_associations True --dict_name edge-dict-ppmi-dstc2```
+   ```python preprocess_dstc2.py --source_dir ../data/hi-dstc2 --target_dir ../data/hi-dstc2 --rand_edges False --use_associations True --dict_name edge-dict-ppmi-dstc2```<br />
 
+* ### Pre-process the Cam676 dataset:<br />
+   * ```python delex_split.py``` to delexicalize the utterances and split the entire dataset into train, test and validation sets. The already splitted and delexicalized files are also provided in ```data/CamRest676/```.
+   * If you already have the train, test and validation files then run: <br />
+``` python preprocess_cam.py --source_dir ../data/CamRest676 --target_dir ../data/CamRest676``` <br /> to get the final preprocessed data. This final data is also provided in ```data/CamRest676/preprocessed_CamRest676_final_data_dlex.json```.
 ## Training and Inference
 * To train the model on En-DSTC2 run:<br />
    ```python main.py -train=True -config_id=1 -data_dir=../data/en-dstc2 -data_name=/preprocessed-dialog-dstc2-final_data.json -rnn_unit=gru -edge_gate=True -use_rnn=True -learning_rate=0.0008 -l2=0.001 -batch_size=32 -epochs=30 -num_hops=1 -dropout=0.9 -word_emb_dim=300 -rnn_hidden_units=300 -gcn_hidden_units=300 -seed=1234 -init=trunc```
