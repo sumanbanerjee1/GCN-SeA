@@ -12,6 +12,9 @@ tensorflow 1.8 <br />
 logging <br />
 scipy 1.1 <br />
 
+## Trained Models
+Please find the trained models [HERE](https://drive.google.com/file/d/1D6ZXTAlsLAgPrkrULWukCsfSQExquJAt/view?usp=sharing)
+
 ## Data Pre-processing 
 We need to pre-process the raw dialogue text files into dictionaries containing the dependency/contextual graphs for dialogue history, query and create the Knowledge graph from the KB triples. <br />
 * ### Pre-process En-DSTC2:
